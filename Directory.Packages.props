@@ -1,0 +1,33 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <!--
+    ⚠ The split here is not obvious, and getting it wrong fails the build both ways.
+
+    Microsoft.AspNetCore.App supplies dependency injection, configuration, logging, options and the
+    antiforgery and MVC filter types — so naming any Microsoft.Extensions.* package is NU1510,
+    which this repository treats as an error.
+
+    It does NOT supply the JwtBearer handler or the Microsoft.IdentityModel token types. Those ship
+    as a package and must be referenced, which is the one PackageReference the library carries.
+
+    Pluperfect.hCaptcha lists the Extensions packages because it is a plain class library with no
+    shared framework behind it. This one is not, and the two csproj files differ for that reason.
+  -->
+  <ItemGroup Label="Authentication">
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Testing">
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="NUnit" Version="4.4.0" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="5.1.0" />
+    <PackageVersion Include="NUnit.Analyzers" Version="4.11.0" />
+    <PackageVersion Include="Shouldly" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

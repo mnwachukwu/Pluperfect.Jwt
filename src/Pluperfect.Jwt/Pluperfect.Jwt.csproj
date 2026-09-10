@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Pluperfect.Jwt</RootNamespace>
+    <AssemblyName>Pluperfect.Jwt</AssemblyName>
+    <Authors>Studio TM14</Authors>
+    <Description>Session tokens carried in an HttpOnly cookie: issuing, validation, rotating refresh tokens with replay detection, and the CSRF layers that a cookie transport makes mandatory.</Description>
+  </PropertyGroup>
+
+  <!--
+    This library plugs into an application's authentication pipeline, so it only ever loads inside
+    a host that already has the ASP.NET Core shared framework. That supplies DI, configuration,
+    logging, options, antiforgery and the MVC filter types — naming any of those as a
+    PackageReference is NU1510, treated as an error here.
+  -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!--
+    The JwtBearer handler and the Microsoft.IdentityModel token types are NOT part of that shared
+    framework, so this one reference is real. It transitively brings
+    Microsoft.IdentityModel.JsonWebTokens and .Tokens.
+
+    ⚠ Do not add System.IdentityModel.Tokens.Jwt alongside it. That is the legacy handler, and
+    having both in one project is how inbound claim mapping ends up applying where nobody
+    expected it — which degrades authorization to "not signed in", silently.
+  -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+  </ItemGroup>
+
+</Project>

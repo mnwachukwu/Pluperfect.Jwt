@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Pluperfect.Jwt/Pluperfect.Jwt.csproj" />
+  <Project Path="tests/Pluperfect.Jwt.Tests/Pluperfect.Jwt.Tests.csproj" />
+</Solution>

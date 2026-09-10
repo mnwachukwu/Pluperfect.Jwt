@@ -1,0 +1,35 @@
+# --- .NET ------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+artifacts/
+
+# --- Test and coverage output ----------------------------------------------
+[Tt]est[Rr]esult*/
+*.coverage
+*.coveragexml
+
+# --- Secrets ---------------------------------------------------------------
+# THIS REPOSITORY IS PUBLIC AND HOLDS NO SECRET OF ANY KIND.
+#
+# The signing key is read from the consuming deployment's own configuration on
+# its own box. Nothing here has a development key baked in either — see
+# PluperfectJwtOptions — so a credential appearing in this tree is a mistake to
+# be removed and rotated, not a file to be ignored.
+appsettings.Production.json
+appsettings.Development.json
+*.env
+*.pem
+*.key
+
+# --- Not ignored, deliberately ---------------------------------------------
+# packages.lock.json IS committed. RestorePackagesWithLockFile is on and CI
+# restores locked, so the lock file is what makes a restore reproducible.
+
+# --- Client package --------------------------------------------------------
+# Built output. Consumers take it by file: dependency and build it themselves;
+# committing it would mean reviewing compiler output in every pull request.
+client/dist/
+client/node_modules/
