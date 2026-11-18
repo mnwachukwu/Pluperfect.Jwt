@@ -151,3 +151,30 @@ Concurrency here is the difference between working and signing everyone out on a
 Extracted from `PokéStory/Site/Server`, which is the reference implementation for this stack and
 where the rationale in these comments was first worked out. Where this library and that codebase
 disagree, that codebase is right and this is a bug.
+
+## Licenses
+
+Pluperfect.Jwt is MIT-licensed; see [LICENSE](LICENSE). It takes in the packages below directly, each under its own
+license. The packages those bring in carry licenses of their own.
+
+### The library (`src/Pluperfect.Jwt`)
+
+| Package | Used for | License |
+|---|---|---|
+| [Microsoft.AspNetCore.Authentication.JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) | Validating the access token each request carries | [MIT](https://spdx.org/licenses/MIT.html) |
+
+### The tests (`tests/Pluperfect.Jwt.Tests`)
+
+| Package | Used for | License |
+|---|---|---|
+| [Microsoft.NET.Test.Sdk](https://www.nuget.org/packages/Microsoft.NET.Test.Sdk) | Running the tests | [MIT](https://spdx.org/licenses/MIT.html) |
+| [NUnit](https://www.nuget.org/packages/NUnit) | The test framework | [MIT](https://spdx.org/licenses/MIT.html) |
+| [NUnit3TestAdapter](https://www.nuget.org/packages/NUnit3TestAdapter) | Running NUnit tests through `dotnet test` | [MIT](https://spdx.org/licenses/MIT.html) |
+| [NUnit.Analyzers](https://www.nuget.org/packages/NUnit.Analyzers) | Catching test mistakes at build time | [MIT](https://spdx.org/licenses/MIT.html) |
+| [Shouldly](https://www.nuget.org/packages/Shouldly) | Assertions | [BSD-3-Clause](https://spdx.org/licenses/BSD-3-Clause.html) |
+
+### The client (`client/package.json`)
+
+| Package | Used for | License |
+|---|---|---|
+| [TypeScript](https://www.npmjs.com/package/typescript) (`typescript`) | Compiling the client | [Apache-2.0](https://spdx.org/licenses/Apache-2.0.html) |
